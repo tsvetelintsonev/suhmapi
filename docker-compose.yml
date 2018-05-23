@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  suhmapi:
+    image: suhmapi
+    build: .
+    ports:
+      - 6000:6000
