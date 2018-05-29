@@ -6,7 +6,7 @@ namespace SuhMapi.Core.Api.Repositories
     {
          TEntity GetById(string id);
          IEnumerable<TEntity> GetAll(string id);
-         void Create(TEntity resource);
-         void Delete(TEntity resource);
+         void Create(TEntity entity);
+         void Delete(TEntity entity);
     }
 }

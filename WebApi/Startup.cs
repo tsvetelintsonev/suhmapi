@@ -8,6 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using SuhMapi.Core.Api.Repositories.Mongo.Startups;
+using SuhMapi.Core.Api.Services;
+using SuhMapi.WebApi.Settings;
 
 namespace WebApi
 {
@@ -23,7 +27,21 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AppSettings appSettings = new AppSettings();
+
+            Configuration.Bind(appSettings);
+
             services.AddMvc();
+
+            // Register AppSettings
+            services.AddSingleton<AppSettings>(appSettings);
+
+            // Register internal services
+            services.AddTransient<IStartupsService, StartupsService>();
+
+            // Register internal repositories
+            services.AddSingleton<MongoClient>(new MongoClient(appSettings.ConnectionStrings.MongoDb));
+            services.AddTransient<IStartupsRepository, StartupsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

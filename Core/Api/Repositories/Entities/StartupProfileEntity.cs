@@ -1,13 +1,15 @@
-using SuhMapi.Core.Api.Services.Countries.Models;
+using System;
+using SuhMapi.Core.Api.Repositories.Entities;
 
-namespace SuhMapi.Core.Api.Services.Startups.Models
+namespace SuhMapi.Core.Api.Repositories.Entities
 {
-    public class StartupProfile
+    public class StartupProfileEntity
     {
+        public Guid Id { get; set; }
         public string CompanyName { get; set; }
         public string WhatDoYouDo { get; set; }
-        public Country Country { get; set; }
-        public Town Town { get; set; }
+        public CountryEntity Country { get; set; }
+        public TownEntity Town { get; set; }
         public string Address { get; set; }
         public string WebsiteUrl { get; set; }
         public int NumberOfEmployees { get; set; }
