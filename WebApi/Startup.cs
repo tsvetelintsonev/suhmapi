@@ -9,8 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using SuhMapi.Core.Api.Repositories.Mongo;
 using SuhMapi.Core.Api.Repositories.Mongo.Startups;
 using SuhMapi.Core.Api.Services;
+using SuhMapi.Core.Repositories.Mongo.Startups;
 using SuhMapi.WebApi.Settings;
 
 namespace WebApi
@@ -40,7 +42,9 @@ namespace WebApi
             services.AddTransient<IStartupsService, StartupsService>();
 
             // Register internal repositories
-            services.AddSingleton<MongoClient>(new MongoClient(appSettings.ConnectionStrings.MongoDb));
+            services.AddSingleton<IMongoDatabase>(new MongoClient(appSettings.ConnectionStrings.MongoDb)
+            .GetDatabase(new MongoUrl(appSettings.ConnectionStrings.MongoDb).DatabaseName));
+
             services.AddTransient<IStartupsRepository, StartupsRepository>();
         }
 

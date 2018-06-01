@@ -1,6 +1,6 @@
-namespace SuhMapi.Core.Api.Repositories.Entities
+namespace SuhMapi.Core.Api.Repositories.Models
 {
-    public class CountryEntity
+    public class Country
     {
         public string Id { get; set; }
         public string IsoCode { get; set; }

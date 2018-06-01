@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Mapster;
-using SuhMapi.Core.Api.Repositories.Entities;
+using SuhMapi.Core.Api.Repositories.Models;
 using SuhMapi.Core.Api.Repositories.Mongo.Startups;
 using SuhMapi.Core.Api.Services.Models;
 
@@ -15,7 +15,7 @@ namespace SuhMapi.Core.Api.Services
 
         public void Create(StartupProfileModel model)
         {
-            _startupsRepository.Create(model.Adapt<StartupProfileEntity>());
+            _startupsRepository.Create(model.Adapt<StartupProfile>());
         }
 
         public void Delete(StartupProfileModel model)

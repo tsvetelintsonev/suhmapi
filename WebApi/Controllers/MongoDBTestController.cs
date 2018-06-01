@@ -16,8 +16,9 @@ namespace SuhMapi.WebApi.Controllers
             _startupsService = startupsService;
         }
 
-        public StartupProfileModel Index() {
-            return null;
+        public string Index() {
+            _startupsService.Create(new StartupProfileModel{CompanyName = "test company name"});
+            return "Helooooooo";
         }
 
     }
