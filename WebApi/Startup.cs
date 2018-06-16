@@ -45,6 +45,7 @@ namespace WebApi
             services.AddSingleton<IMongoDatabase>(new MongoClient(appSettings.ConnectionStrings.MongoDb)
             .GetDatabase(new MongoUrl(appSettings.ConnectionStrings.MongoDb).DatabaseName));
 
+            // Register repositories
             services.AddTransient<IStartupsRepository, StartupsRepository>();
         }
 

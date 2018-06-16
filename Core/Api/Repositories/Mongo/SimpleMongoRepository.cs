@@ -25,7 +25,7 @@ namespace SuhMapi.Core.Api.Repositories.Mongo
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<TDocument> GetAll(string id)
+        public IEnumerable<TDocument> GetAll()
         {
             throw new System.NotImplementedException();
         }
